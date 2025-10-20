@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import {useRouter} from "next/navigation";
 import InputField from '@/components/Forms/inputField';
 import FooterLink from '@/components/Forms/FooterLink';
+import { signInWithEmail } from '@/lib/actions/auth.actions';
 
 const SignIn = () => {
     const router = useRouter()
@@ -24,24 +25,23 @@ const SignIn = () => {
         mode: 'onBlur',
     });
 
-    // const onSubmit = async (data: SignInFormData) => {
-    //     try {
-    //         const result = await signInWithEmail(data);
-    //         if(result.success) router.push('/');
-    //     } catch (e) {
-    //         console.error(e);
-    //         toast.error('Sign in failed', {
-    //             description: e instanceof Error ? e.message : 'Failed to sign in.'
-    //         })
-    //     }
-    // }
+    const onSubmit = async (data: SignInFormData) => {
+        try {
+            const result = await signInWithEmail(data);
+            if(result.success) router.push('/');
+        } catch (e) {
+            console.error(e);
+            toast.error('Sign in failed', {
+                description: e instanceof Error ? e.message : 'Failed to sign in.'
+            })
+        }
+    }
 
     return (
         <>
             <h1 className="form-title">Welcome back</h1>
 
-            {/* <form onSubmit={handleSubmit(onSubmit)} className="space-y-5"> */}
-                 <form className="space-y-5">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                 <InputField
                     name="email"
                     label="Email"
