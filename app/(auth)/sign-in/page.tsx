@@ -2,10 +2,8 @@
 
 import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
+import {toast} from "sonner";
 
-// import {signInWithEmail, signUpWithEmail} from "@/lib/actions/auth.actions";
-// import {toast} from "sonner";
-// import {signInEmail} from "better-auth/api";
 import {useRouter} from "next/navigation";
 import InputField from '@/components/Forms/inputField';
 import FooterLink from '@/components/Forms/FooterLink';
