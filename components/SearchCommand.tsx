@@ -10,6 +10,14 @@ import Link from "next/link";
 import { searchStocks } from "@/lib/actions/ finnhub.actions";
 import { useDebounce } from "@/hooks/useDebounce";
 
+/**
+ * Renders a searchable stock picker dialog with a trigger (button or inline text), debounced search, and navigable results.
+ *
+ * @param renderAs - Determines the trigger type: `'button'` renders a Button, `'text'` renders an inline clickable text.
+ * @param label - Trigger label shown in the button or text trigger.
+ * @param initialStocks - Initial list of stocks (with watchlist status) displayed when there is no active search.
+ * @returns The SearchCommand React element that manages opening a CommandDialog, performing debounced searches, and rendering matching stocks as links.
+ */
 export default function SearchCommand({ renderAs = 'button', label = 'Add stock', initialStocks }: SearchCommandProps) {
   const [open, setOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
