@@ -3,7 +3,7 @@
 import {NAV_ITEMS} from "@/lib/constants";
 import Link from "next/link";
 import {usePathname} from "next/navigation";
-// import SearchCommand from "@/components/SearchCommand";
+import SearchCommand from "./SearchCommand"; 
 
 const NavItems = ({initialStocks}: { initialStocks: StockWithWatchlistStatus[]}) => {
     const pathname = usePathname()
@@ -19,11 +19,11 @@ const NavItems = ({initialStocks}: { initialStocks: StockWithWatchlistStatus[]})
             {NAV_ITEMS.map(({ href, label }) => {
                 if(href === '/search') return (
                     <li key="search-trigger">
-                        {/* <SearchCommand
+                        <SearchCommand
                             renderAs="text"
                             label="Search"
                             initialStocks={initialStocks}
-                        /> */}
+                        />
                     </li>
                 )
 
