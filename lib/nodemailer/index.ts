@@ -34,10 +34,10 @@ export const sendNewsSummaryEmail = async (
         .replace('{{newsContent}}', newsContent);
 
     const mailOptions = {
-        from: `"TradX News" <nishuldhakar123@gmail.com>`,
+        from: `"Simple-Invest News" <nishuldhakar123@gmail.com>`,
         to: email,
         subject: `📈 Market News Summary Today - ${date}`,
-        text: `Today's market news summary from TradX`,
+        text: `Today's market news summary from Simple-Invest`,
         html: htmlTemplate,
     };
 

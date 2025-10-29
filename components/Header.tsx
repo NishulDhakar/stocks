@@ -15,7 +15,7 @@ const Header = async ({ user }: { user: User }) => {
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/assets/icons/logo.svg"
-            alt="TradX logo"
+            alt="Simple-Invest logo"
             width={140}
             height={32}
             className="h-8 w-auto"
