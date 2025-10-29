@@ -3,12 +3,14 @@
 import { useEffect, useState } from "react"
 import { CommandDialog, CommandEmpty, CommandInput, CommandList } from "@/components/ui/command"
 import {Button} from "@/components/ui/button";
-import {Loader2,  TrendingUp} from "lucide-react";
+import {Loader2,  Star,  TrendingUp} from "lucide-react";
 import Link from "next/link";
 
 
 import { searchStocks } from "@/lib/actions/ finnhub.actions";
 import { useDebounce } from "@/hooks/useDebounce";
+import { addToWatchlist, removeFromWatchlist } from "@/lib/actions/watchlist.actions";
+import { toast } from "sonner";
 
 export default function SearchCommand({ renderAs = 'button', label = 'Add stock', initialStocks }: SearchCommandProps) {
   const [open, setOpen] = useState(false)
@@ -35,9 +37,12 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
 
     setLoading(true)
     try {
+        console.log('Searching for:', searchTerm.trim());
         const results = await searchStocks(searchTerm.trim());
+        console.log('Search results:', results);
         setStocks(results);
-    } catch {
+    } catch (error) {
+      console.error('Search error:', error);
       setStocks([])
     } finally {
       setLoading(false)
@@ -54,6 +59,39 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
     setOpen(false);
     setSearchTerm("");
     setStocks(initialStocks);
+  }
+
+  const handleStarClick = async (e: React.MouseEvent, stock: StockWithWatchlistStatus) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    try {
+      if (stock.isInWatchlist) {
+        const result = await removeFromWatchlist(stock.symbol);
+        if (result.success) {
+          // Update local state
+          setStocks(prev => prev.map(s => 
+            s.symbol === stock.symbol ? { ...s, isInWatchlist: false } : s
+          ));
+          toast.success("Stock removed from watchlist");
+        } else {
+          toast.error(result.message);
+        }
+      } else {
+        const result = await addToWatchlist(stock.symbol, stock.name);
+        if (result.success) {
+          // Update local state
+          setStocks(prev => prev.map(s => 
+            s.symbol === stock.symbol ? { ...s, isInWatchlist: true } : s
+          ));
+          toast.success("Stock added to watchlist");
+        } else {
+          toast.error(result.message);
+        }
+      }
+    } catch (error) {
+      toast.error("Failed to update watchlist");
+    }
   }
 
   return (
@@ -100,7 +138,14 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
                           {stock.symbol} | {stock.exchange } | {stock.type}
                         </div>
                       </div>
-                    {/*<Star />*/}
+                    <Star 
+                      className={`h-5 w-5 cursor-pointer transition-colors ${
+                        stock.isInWatchlist 
+                          ? 'text-yellow-400 fill-current hover:text-yellow-300' 
+                          : 'text-gray-400 hover:text-yellow-400'
+                      }`}
+                      onClick={(e) => handleStarClick(e, stock)}
+                    />
                     </Link>
                   </li>
               ))}

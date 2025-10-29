@@ -25,7 +25,7 @@ export { fetchJSON };
 export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> {
   try {
     const range = getDateRange(5);
-    const token = process.env.FINNHUB_API_KEY ?? NEXT_PUBLIC_FINNHUB_API_KEY;
+    const token = process.env.NEXT_PUBLIC_FINNHUB_API_KEY ?? NEXT_PUBLIC_FINNHUB_API_KEY;
     if (!token) {
       throw new Error('FINNHUB API key is not configured');
     }
@@ -100,7 +100,7 @@ export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> 
 
 export const searchStocks = cache(async (query?: string): Promise<StockWithWatchlistStatus[]> => {
   try {
-    const token = process.env.FINNHUB_API_KEY ?? NEXT_PUBLIC_FINNHUB_API_KEY;
+    const token = process.env.NEXT_PUBLIC_FINNHUB_API_KEY ?? NEXT_PUBLIC_FINNHUB_API_KEY;
     if (!token) {
       // If no token, log and return empty to avoid throwing per requirements
       console.error('Error in stock search:', new Error('FINNHUB API key is not configured'));
@@ -153,6 +153,16 @@ const name: string | undefined = profile?.name || profile?.ticker || undefined;
       results = Array.isArray(data?.result) ? data.result : [];
     }
 
+    // Get user's watchlist symbols
+    const { auth } = await import('@/lib/batter-auth/auth');
+    const session = await auth.api.getSession({ headers: await import('next/headers').then(m => m.headers()) });
+    let watchlistSymbols: string[] = [];
+    
+    if (session?.user?.email) {
+      const { getWatchlistSymbolsByEmail } = await import('@/lib/actions/watchlist.actions');
+      watchlistSymbols = await getWatchlistSymbolsByEmail(session.user.email);
+    }
+
     const mapped: StockWithWatchlistStatus[] = results
       .map((r) => {
         const upper = (r.symbol || '').toUpperCase();
@@ -166,7 +176,7 @@ const name: string | undefined = profile?.name || profile?.ticker || undefined;
           name,
           exchange,
           type,
-          isInWatchlist: false,
+          isInWatchlist: watchlistSymbols.includes(upper),
         };
         return item;
       })
@@ -175,6 +185,8 @@ const name: string | undefined = profile?.name || profile?.ticker || undefined;
     return mapped;
   } catch (err) {
     console.error('Error in stock search:', err);
+    console.error('Search query was:', query);
+    console.error('API token available:', !!(process.env.NEXT_PUBLIC_FINNHUB_API_KEY ?? NEXT_PUBLIC_FINNHUB_API_KEY));
     return [];
   }
 });

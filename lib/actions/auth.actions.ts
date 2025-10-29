@@ -4,6 +4,13 @@ import {inngest} from "@/lib/inngest/client";
 import {headers} from "next/headers";
 import { auth } from "../batter-auth/auth";
 
+
+// export const signInWithGoogle = async () => {
+//    await auth.api.signIn.social({
+//       provider: "google"
+//    })
+// }
+
 export const signUpWithEmail = async ({ email, password, fullName, country, investmentGoals, riskTolerance, preferredIndustry }: SignUpFormData) => {
     try {
         const response = await auth.api.signUpEmail({ body: { email, password, name: fullName } })

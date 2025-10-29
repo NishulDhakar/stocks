@@ -484,6 +484,135 @@
   background-color: #30333A;
 }
 
-.scrollbar-hide-default::-webkit-scrollbar-thumb:hover {
-  background-color: #9095A1;
-}
+  .scrollbar-hide-default::-webkit-scrollbar-thumb:hover {
+    background-color: #9095A1;
+  }
+  
+  /* Watchlist Page Styles */
+  .watchlist-page-container {
+    @apply min-h-screen bg-gray-900 text-white;
+  }
+  
+  .watchlist-page-header {
+    @apply mb-8;
+  }
+  
+  .watchlist-page-title {
+    @apply text-3xl font-bold mb-2;
+  }
+  
+  .watchlist-page-description {
+    @apply text-gray-400;
+  }
+  
+  .watchlist-section {
+    @apply bg-gray-800 rounded-lg p-6;
+  }
+  
+  .watchlist-section-header {
+    @apply flex justify-between items-center mb-6;
+  }
+  
+  .watchlist-section-title {
+    @apply text-xl font-semibold;
+  }
+  
+  .add-stock-btn {
+    @apply bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-md font-medium transition-colors;
+  }
+  
+  .watchlist-table-container {
+    @apply overflow-x-auto;
+  }
+  
+  .watchlist-table {
+    @apply w-full;
+  }
+  
+  .watchlist-table thead tr {
+    @apply border-b border-gray-700;
+  }
+  
+  .watchlist-table th {
+    @apply text-left py-3 px-4 font-medium text-gray-300;
+  }
+  
+  .watchlist-table tbody tr {
+    @apply border-b border-gray-800 hover:bg-gray-800 transition-colors;
+  }
+  
+  .watchlist-table td {
+    @apply py-4 px-4;
+  }
+  
+  .watchlist-company-cell {
+    @apply flex items-center gap-3;
+  }
+  
+  .watchlist-star-icon {
+    @apply h-5 w-5 text-yellow-400 fill-current cursor-pointer hover:text-yellow-300 transition-colors;
+  }
+  
+  .watchlist-company-name {
+    @apply font-medium text-white;
+  }
+  
+  .watchlist-symbol {
+    @apply text-gray-300;
+  }
+  
+  .watchlist-price {
+    @apply text-white font-medium;
+  }
+  
+  .watchlist-change {
+    @apply flex items-center gap-1;
+  }
+  
+  .watchlist-change-positive {
+    @apply text-green-400;
+  }
+  
+  .watchlist-change-negative {
+    @apply text-red-400;
+  }
+  
+  .watchlist-change-icon {
+    @apply h-4 w-4;
+  }
+  
+  .watchlist-change-text {
+    @apply font-medium;
+  }
+  
+  .watchlist-market-cap {
+    @apply text-gray-300;
+  }
+  
+  .watchlist-pe-ratio {
+    @apply text-gray-300;
+  }
+  
+  .watchlist-alert-btn {
+    @apply bg-amber-600 hover:bg-amber-700 text-white px-3 py-1 rounded text-sm font-medium transition-colors;
+  }
+  
+  .watchlist-empty-state {
+    @apply text-center py-12;
+  }
+  
+  .watchlist-empty-content {
+    @apply text-gray-400 mb-4;
+  }
+  
+  .watchlist-empty-icon {
+    @apply h-12 w-12 mx-auto mb-2 opacity-50;
+  }
+  
+  .watchlist-empty-title {
+    @apply text-lg;
+  }
+  
+  .watchlist-empty-description {
+    @apply text-sm;
+  }

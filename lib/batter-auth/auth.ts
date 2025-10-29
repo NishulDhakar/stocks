@@ -21,7 +21,7 @@ export const getAuth = async () => {
             enabled: true,
             disableSignUp: false,
             requireEmailVerification: false,
-            minPasswordLength: 8,
+            minPasswordLength: 6,
             maxPasswordLength: 128,
             autoSignIn: true,
         },
