@@ -75,7 +75,7 @@ const SignUp = () => {
                     type="password"
                     register={register}
                     error={errors.password}
-                    validation={{ required: 'Password is required', minLength: 8 }}
+                    validation={{ required: 'Password is required', minLength: 6 }}
                 />
 
                 <CountrySelectField
