@@ -1,377 +1,374 @@
 <div align="center">
   <br />
   <a href="#" target="_blank">
-    <img src="./public/assets/images/dashboard.png" alt="Project Banner" />
+    <img src="./public/assets/images/dashboard.png" alt="Simple-Invest Dashboard" />
   </a>
   <br/>
 
+  <h1>Simple-Invest</h1>
+  <p><strong>Track markets. Set alerts. Stay informed. Forever free.</strong></p>
+
   <div>
-    <img src="https://img.shields.io/badge/-Next.js-black?style=for-the-badge&logoColor=white&logo=next.js&color=000000" alt="Next.js badge" />
-    <img src="https://img.shields.io/badge/-TypeScript-black?style=for-the-badge&logoColor=white&logo=typescript&color=3178C6"/>
-    <img src="https://img.shields.io/badge/-Tailwind%20CSS-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=38B2AC"/>
-    <img src="https://img.shields.io/badge/-shadcn/ui-black?style=for-the-badge&logoColor=white&logo=shadcnui&color=000000"/>
-    <img src="https://img.shields.io/badge/-Radix%20UI-black?style=for-the-badge&logoColor=white&logo=radixui&color=000000"/>
-    <img src="https://img.shields.io/badge/-Better%20Auth-black?style=for-the-badge&logoColor=white&logo=betterauth&color=000000"/>
-    <img src="https://img.shields.io/badge/-MongoDB-black?style=for-the-badge&logoColor=white&logo=mongodb&color=00A35C"/>
-    <img src="https://img.shields.io/badge/-Inngest-black?style=for-the-badge&logoColor=white&logo=inngest&color=000000"/>
-    <img src="https://img.shields.io/badge/-Nodemailer-black?style=for-the-badge&logoColor=white&logo=gmail&color=EA4335"/>
-    <img src="https://img.shields.io/badge/-TradingView-black?style=for-the-badge&logoColor=white&logo=tradingview&color=2962FF"/>
-    <img src="https://img.shields.io/badge/-Finnhub-black?style=for-the-badge&logoColor=white&color=30B27A"/>
-    <img src="https://img.shields.io/badge/-CodeRabbit-black?style=for-the-badge&logoColor=white&logo=coderabbit&color=9146FF"/>
+    <img src="https://img.shields.io/badge/-Next.js-black?style=for-the-badge&logoColor=white&logo=next.js&color=000000" alt="Next.js" />
+    <img src="https://img.shields.io/badge/-TypeScript-black?style=for-the-badge&logoColor=white&logo=typescript&color=3178C6" alt="TypeScript" />
+    <img src="https://img.shields.io/badge/-Tailwind%20CSS-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=38B2AC" alt="Tailwind CSS" />
+    <img src="https://img.shields.io/badge/-MongoDB-black?style=for-the-badge&logoColor=white&logo=mongodb&color=00A35C" alt="MongoDB" />
   </div>
+
+  <p align="center">
+    <a href="#-features">Features</a> •
+    <a href="#-quick-start">Quick Start</a> •
+    <a href="#-docker-setup">Docker</a> •
+    <a href="#-contributing">Contributing</a> •
+    <a href="#-open-dev-society-manifesto">Manifesto</a>
+  </p>
 </div>
 
-# Simple-Invest
+---
 
-Simple-Invest is an open-source alternative to expensive market platforms. Track real-time prices, set personalized alerts, and explore detailed company insights — built openly, for everyone, forever free.
+## 🎯 What is Simple-Invest?
 
-Note: Simple-Invest is community-built and not a brokerage. Market data may be delayed based on provider rules and your configuration. Nothing here is financial advice.
+Simple-Invest is an **open-source alternative to expensive market platforms**. Built for students, developers, and individual investors who want powerful market tracking without the subscription fees.
 
-## ✨ Introduction
+**Track real-time prices** • **Set personalized alerts** • **Explore company insights** • **Built openly, for everyone**
 
-Simple-Invest is a modern stock market app powered by Next.js (App Router), shadcn/ui and Tailwind CSS, Better Auth for authentication, MongoDB for persistence, Finnhub for market data, and TradingView widgets for charts and market views.
+> **Note:** Simple-Invest is community-built and not a brokerage. Market data may be delayed based on provider rules. Nothing here is financial advice.
 
-## 🌍 Open Dev Society Manifesto <a name="manifesto"></a>
+---
 
-We live in a world where knowledge is hidden behind paywalls. Where tools are locked in subscriptions. Where information is twisted by bias. Where newcomers are told they’re not “good enough” to build.
+## ✨ Features
 
-We believe there’s a better way.
+<table>
+<tr>
+<td width="50%">
 
-- Our Belief: Technology should belong to everyone. Knowledge should be open, free, and accessible. Communities should welcome newcomers with trust, not gatekeeping.
-- Our Mission: Build free, open-source projects that make a real difference:
-    - Tools that professionals and students can use without barriers.
-    - Knowledge platforms where learning is free, forever.
-    - Communities where every beginner is guided, not judged.
-    - Resources that run on trust, not profit.
-- Our Promise: We will never lock knowledge. We will never charge for access. We will never trade trust for money. We run on transparency, donations, and the strength of our community.
-- Our Call: If you’ve ever felt you didn’t belong, struggled to find free resources, or wanted to build something meaningful — you belong here.
+### 🔐 **Authentication**
+Secure email/password auth with Better Auth + MongoDB. Protected routes ensure your data stays private.
 
-Because the future belongs to those who build it openly.
+### 🔍 **Global Search**
+Lightning-fast stock search with **Cmd/Ctrl + K** shortcut. Popular stocks when idle, instant results as you type.
 
-## ⚙️ Tech Stack
+### 📊 **Watchlist**
+Build and manage your personal watchlist. Each symbol is unique per user and stored securely in MongoDB.
 
-Core
-- Next.js 15 (App Router), React 19
-- TypeScript
-- Tailwind CSS v4 (via @tailwindcss/postcss)
-- shadcn/ui + Radix UI primitives
-- Lucide icons
+</td>
+<td width="50%">
 
-Auth & Data
-- Better Auth (email/password) with MongoDB adapter
-- MongoDB + Mongoose
-- Finnhub API for symbols, profiles, and market news
-- TradingView embeddable widgets
+### 📈 **Stock Details**
+Interactive TradingView charts, company profiles, financials, and technical indicators — all in one view.
 
-Automation & Comms
-- Inngest (events, cron, AI inference via Gemini)
-- Nodemailer (Gmail transport)
-- next-themes, cmdk (command palette), react-hook-form
+### 🌍 **Market Overview**
+Heatmaps, live quotes, and top stories powered by TradingView widgets.
 
-Language composition
-- TypeScript (~93.4%), CSS (~6%), JavaScript (~0.6%)
+### 📧 **Smart Notifications**
+AI-personalized welcome emails and daily news summaries based on your watchlist.
 
-## 🔋 Features
+</td>
+</tr>
+</table>
 
-- Authentication
-    - Email/password auth with Better Auth + MongoDB adapter
-    - Protected routes enforced via Next.js middleware
-- Global search and Command + K palette
-    - Fast stock search backed by Finnhub
-    - Popular stocks when idle; debounced querying
-- Watchlist
-    - Per-user watchlist stored in MongoDB (unique symbol per user)
-- Stock details
-    - TradingView symbol info, candlestick/advanced charts, baseline, technicals
-    - Company profile and financials widgets
-- Market overview
-    - Heatmap, quotes, and top stories (TradingView widgets)
-- Personalized onboarding
-    - Collects country, investment goals, risk tolerance, preferred industry
-- Email & automation
-    - AI-personalized welcome email (Gemini via Inngest)
-    - Daily news summary emails (cron) personalized using user watchlists
-- Polished UI
-    - shadcn/ui components, Radix primitives, Tailwind v4 design tokens
-    - Dark theme by default
-- Keyboard shortcut
-    - Cmd/Ctrl + K for quick actions/search
+### 🎨 **Beautiful UI**
+- Dark theme by default with shadcn/ui components
+- Radix UI primitives for accessibility
+- Tailwind CSS v4 design system
+- Smooth animations and transitions
 
-## 🤸 Quick Start
+---
 
-Prerequisites
-- Node.js 20+ and pnpm or npm
-- MongoDB connection string (MongoDB Atlas or local via Docker Compose)
-- Finnhub API key (free tier supported; real-time may require paid)
-- Gmail account for email (or update Nodemailer transport)
-- Optional: Google Gemini API key (for AI-generated welcome intros)
+## 🚀 Quick Start
 
-Clone and install
+### Prerequisites
+
+| Requirement | Description |
+|------------|-------------|
+| **Node.js 20+** | Runtime environment |
+| **MongoDB** | Database (Atlas or local Docker) |
+| **Finnhub API** | Market data (free tier available) |
+| **Gmail Account** | Email notifications |
+| **Gemini API** _(optional)_ | AI-powered features |
+
+### Installation
+
 ```bash
+# Clone the repository
 git clone https://github.com/Open-Dev-Society/Simple-Invest.git
 cd Simple-Invest
 
-# choose one:
+# Install dependencies
 pnpm install
 # or
 npm install
-```
 
-Configure environment
-- Create a `.env` file (see [Environment Variables](#environment-variables)).
-- Verify DB connectivity:
-```bash
+# Set up environment variables (see below)
+cp .env.example .env
+
+# Test database connection
 pnpm test:db
-# or
-npm run test:db
-```
 
-Run development
-```bash
-# Next.js dev (Turbopack)
+# Start development server
 pnpm dev
-# or
-npm run dev
 ```
 
-Run Inngest locally (workflows, cron, AI)
+### Running with Inngest (for background jobs)
+
 ```bash
+# In a separate terminal
 npx inngest-cli@latest dev
 ```
 
-Build & start (production)
-```bash
-pnpm build && pnpm start
-# or
-npm run build && npm start
-```
+🎉 **Open [http://localhost:3000](http://localhost:3000)** and start exploring!
 
-Open http://localhost:3000 to view the app.
+---
 
 ## 🐳 Docker Setup
 
-You can run Simple-Invest and MongoDB easily with Docker Compose.
+Run the entire stack with one command:
 
-1) Ensure Docker and Docker Compose are installed.
-
-2) docker-compose.yml includes two services:
-- Simple-Invest (this app)
-- mongodb (MongoDB database with a persistent volume)
-
-3) Create your `.env` (see examples below). For the Docker setup, use a local connection string like:
-```env
-MONGODB_URI=mongodb://root:example@mongodb:27017/Simple-Invest?authSource=admin
-```
-
-4) Start the stack:
 ```bash
-# from the repository root
+# Start MongoDB and the app
 docker compose up -d mongodb && docker compose up -d --build
 ```
 
-5) Access the app:
-- App: http://localhost:3000
-- MongoDB is available inside the Docker network at host mongodb:27017
+**Access points:**
+- 🌐 App: [http://localhost:3000](http://localhost:3000)
+- 🗄️ MongoDB: `mongodb:27017` (internal network)
 
-Notes
-- The app service depends_on the mongodb service.
-- Credentials are defined in Compose for the MongoDB root user; authSource=admin is required on the connection string for root.
-- Data persists across restarts via the docker volume.
+Your data persists across restarts via Docker volumes. See the full [Docker Setup](#docker-setup-detailed) section for configuration details.
 
-Optional: Example MongoDB service definition used in this project:
-```yaml
-services:
-  mongodb:
-    image: mongo:7
-    container_name: mongodb
-    restart: unless-stopped
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
-    healthcheck:
-      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
-volumes:
-  mongo-data:
-```
+---
 
 ## 🔐 Environment Variables
 
-Create `.env` at the project root. Choose either a hosted MongoDB (Atlas) URI or the local Docker URI.
+Create a `.env` file in the project root:
 
-Hosted (MongoDB Atlas):
+<details>
+<summary><strong>📋 Click to see environment template</strong></summary>
+
 ```env
-# Core
+# === Core ===
 NODE_ENV=development
 
-# Database (Atlas)
+# === Database ===
+# Option 1: MongoDB Atlas (hosted)
 MONGODB_URI=mongodb+srv://<user>:<pass>@<cluster>/<db>?retryWrites=true&w=majority
 
-# Better Auth
-BETTER_AUTH_SECRET=your_better_auth_secret
+# Option 2: Local Docker MongoDB
+# MONGODB_URI=mongodb://root:example@mongodb:27017/Simple-Invest?authSource=admin
+
+# === Authentication ===
+BETTER_AUTH_SECRET=your_better_auth_secret_here
 BETTER_AUTH_URL=http://localhost:3000
 
-# Finnhub
+# === Finnhub API ===
 FINNHUB_API_KEY=your_finnhub_key
-# Optional client-exposed variant if needed by client code:
-NEXT_PUBLIC_FINNHUB_API_KEY=
 FINNHUB_BASE_URL=https://finnhub.io/api/v1
+# Optional: Client-side access (if needed)
+NEXT_PUBLIC_FINNHUB_API_KEY=
 
-# Inngest AI (Gemini)
+# === AI Features (Gemini) ===
 GEMINI_API_KEY=your_gemini_api_key
 
-# Email (Nodemailer via Gmail; consider App Passwords if 2FA)
+# === Email (Nodemailer) ===
 NODEMAILER_EMAIL=youraddress@gmail.com
 NODEMAILER_PASSWORD=your_gmail_app_password
 ```
 
-Local (Docker Compose) MongoDB:
-```env
-# Core
-NODE_ENV=development
+</details>
 
-# Database (Docker)
-MONGODB_URI=mongodb://root:example@mongodb:27017/Simple-Invest?authSource=admin
+**🔒 Security Tips:**
+- Never commit `.env` to version control
+- Use App Passwords for Gmail with 2FA enabled
+- Keep `NEXT_PUBLIC_` variables minimal (they're exposed to browsers)
+- Use dedicated SMTP providers in production
 
-# Better Auth
-BETTER_AUTH_SECRET=your_better_auth_secret
-BETTER_AUTH_URL=http://localhost:3000
+---
 
-# Finnhub
-FINNHUB_API_KEY=your_finnhub_key
-NEXT_PUBLIC_FINNHUB_API_KEY=
-FINNHUB_BASE_URL=https://finnhub.io/api/v1
+## 🏗️ Tech Stack
 
-# Inngest AI (Gemini)
-GEMINI_API_KEY=your_gemini_api_key
+<table>
+<tr>
+<td width="50%">
 
-# Email (Nodemailer via Gmail; consider App Passwords if 2FA)
-NODEMAILER_EMAIL=youraddress@gmail.com
-NODEMAILER_PASSWORD=your_gmail_app_password
+### **Frontend**
+- **Next.js 15** with App Router & React 19
+- **TypeScript** for type safety
+- **Tailwind CSS v4** for styling
+- **shadcn/ui** + Radix UI primitives
+- **Lucide** icons
+
+</td>
+<td width="50%">
+
+### **Backend**
+- **Better Auth** for authentication
+- **MongoDB** + Mongoose for data
+- **Finnhub API** for market data
+- **Inngest** for background jobs
+- **Nodemailer** for emails
+
+</td>
+</tr>
+</table>
+
+**Language Composition:** TypeScript (~93.4%) • CSS (~6%) • JavaScript (~0.6%)
+
+---
+
+## 📁 Project Structure
+
+```
+Simple-Invest/
+├── app/
+│   ├── (auth)/              # Authentication pages
+│   │   ├── sign-in/
+│   │   └── sign-up/
+│   ├── (root)/              # Main application
+│   │   ├── stocks/[symbol]/ # Stock detail pages
+│   │   ├── help/
+│   │   └── page.tsx         # Dashboard
+│   └── api/inngest/         # Inngest webhook
+├── components/
+│   ├── ui/                  # shadcn/ui components
+│   ├── forms/               # Form components
+│   └── Header.tsx, Footer.tsx, etc.
+├── database/
+│   ├── models/              # Mongoose models
+│   └── mongoose.ts          # Database connection
+├── lib/
+│   ├── actions/             # Server actions
+│   ├── better-auth/         # Auth configuration
+│   ├── inngest/             # Background jobs
+│   └── nodemailer/          # Email templates
+├── public/assets/           # Static assets
+└── types/                   # TypeScript definitions
 ```
 
-Notes
-- Keep private keys server-side whenever possible.
-- If using `NEXT_PUBLIC_` variables, remember they are exposed to the browser.
-- In production, prefer a dedicated SMTP provider over a personal Gmail.
-- Do not hardcode secrets in the Dockerfile; use `.env` and Compose.
+---
 
-## 🧱 Project Structure
+## 📡 Integrations
 
-```
-app/
-  (auth)/
-    layout.tsx
-    sign-in/page.tsx
-    sign-up/page.tsx
-  (root)/
-    layout.tsx
-    page.tsx
-    help/page.tsx
-    stocks/[symbol]/page.tsx
-  api/inngest/route.ts
-  globals.css
-  layout.tsx
-components/
-  ui/…          # shadcn/radix primitives (button, dialog, command, input, etc.)
-  forms/…       # InputField, SelectField, CountrySelectField, FooterLink
-  Header.tsx, Footer.tsx, SearchCommand.tsx, WatchlistButton.tsx, …
-database/
-  models/watchlist.model.ts
-  mongoose.ts
-lib/
-  actions/…     # server actions (auth, finnhub, user, watchlist)
-  better-auth/…
-  inngest/…     # client, functions, prompts
-  nodemailer/…  # transporter, email templates
-  constants.ts, utils.ts
-scripts/
-  test-db.mjs
-types/
-  global.d.ts
-next.config.ts          # i.ibb.co image domain allowlist
-postcss.config.mjs      # Tailwind v4 postcss setup
-components.json         # shadcn config
-public/assets/images/   # logos and screenshots
-```
+### **Finnhub**
+Real-time and historical market data. Free tier available with rate limits.
 
-## 📡 Data & Integrations
+### **TradingView**
+Professional-grade charts and market widgets embedded throughout the app.
 
-- Finnhub
-    - Stock search, company profiles, and market news.
-    - Set `FINNHUB_API_KEY` and `FINNHUB_BASE_URL` (default: https://finnhub.io/api/v1).
-    - Free tiers may return delayed quotes; respect rate limits and terms.
+### **Better Auth**
+Modern authentication with MongoDB adapter. Session-based security with middleware protection.
 
-- TradingView
-    - Embeddable widgets used for charts, heatmap, quotes, and timelines.
-    - External images from `i.ibb.co` are allowlisted in `next.config.ts`.
+### **Inngest**
+Reliable background job processing:
+- ✉️ Welcome emails on user signup
+- 📰 Daily news summaries at noon
+- 🤖 AI-powered content via Gemini
 
-- Better Auth + MongoDB
-    - Email/password with MongoDB adapter.
-    - Session validation via middleware; most routes are protected, with public exceptions for `sign-in`, `sign-up`, assets and Next internals.
+---
 
-- Inngest
-    - Workflows:
-        - `app/user.created` → AI-personalized Welcome Email
-        - Cron `0 12 * * *` → Daily News Summary per user
-    - Local dev: `npx inngest-cli@latest dev`.
+## 🛠️ Available Scripts
 
-- Email (Nodemailer)
-    - Gmail transport. Update credentials or switch to your SMTP provider.
-    - Templates for welcome and news summary emails.
+| Command | Description |
+|---------|-------------|
+| `pnpm dev` | Start development server (Turbopack) |
+| `pnpm build` | Build for production |
+| `pnpm start` | Run production server |
+| `pnpm lint` | Run ESLint |
+| `pnpm test:db` | Test database connection |
 
-## 🧪 Scripts & Tooling
-
-Package scripts
-- `dev`: Next.js dev server with Turbopack
-- `build`: Production build (Turbopack)
-- `start`: Run production server
-- `lint`: ESLint
-- `test:db`: Validate DB connectivity
-
-Developer experience
-- TypeScript strict mode
-- Tailwind CSS v4 (no separate tailwind.config needed)
-- shadcn/ui components with Radix primitives
-- cmdk command palette, next-themes, lucide-react icons
+---
 
 ## 🤝 Contributing
 
-You belong here. Whether you’re a student, a self-taught dev, or a seasoned engineer — contributions are welcome.
+**You belong here.** Whether you're writing your first line of code or your millionth, contributions are welcome.
 
-- Open an issue to discuss ideas and bugs
-- Look for “good first issue” or “help wanted”
-- Keep PRs focused; add screenshots for UI changes
-- Be kind, guide beginners, no gatekeeping — that’s the ODS way
+### How to Contribute
+
+1. **🔍 Find an issue** — Look for `good first issue` or `help wanted` labels
+2. **💬 Discuss first** — Open an issue to discuss your idea
+3. **🔧 Make changes** — Keep PRs focused on a single feature/fix
+4. **📸 Add screenshots** — For UI changes, show before/after
+5. **✨ Be kind** — Guide beginners, no gatekeeping
+
+### Development Workflow
+
+```bash
+# Fork and clone the repo
+git clone https://github.com/YOUR_USERNAME/Simple-Invest.git
+
+# Create a feature branch
+git checkout -b feature/amazing-feature
+
+# Make your changes and commit
+git commit -m "Add amazing feature"
+
+# Push and create a Pull Request
+git push origin feature/amazing-feature
+```
+
+---
+
+## 🌍 Open Dev Society Manifesto
+
+> **We live in a world where knowledge is hidden behind paywalls.**
+
+We believe there's a better way.
+
+### Our Belief
+Technology should belong to everyone. Knowledge should be open, free, and accessible. Communities should welcome newcomers with trust, not gatekeeping.
+
+### Our Mission
+Build free, open-source projects that make a real difference:
+- 🔓 **Tools** that professionals and students can use without barriers
+- 📚 **Knowledge platforms** where learning is free, forever
+- 🤝 **Communities** where every beginner is guided, not judged
+- 💎 **Resources** that run on trust, not profit
+
+### Our Promise
+We will never lock knowledge. We will never charge for access. We will never trade trust for money. We run on transparency, donations, and the strength of our community.
+
+### Our Call
+If you've ever felt you didn't belong, struggled to find free resources, or wanted to build something meaningful — **you belong here**.
+
+**Because the future belongs to those who build it openly.**
+
+---
 
 ## 🛡️ Security
 
-If you discover a vulnerability:
-- Do not open a public issue
-- Email: opendevsociety@cc.cc
-- We’ll coordinate responsible disclosure and patch swiftly
+Found a vulnerability? We take security seriously.
+
+- **Do not** open a public issue
+- **Email us** at [opendevsociety@cc.cc](mailto:opendevsociety@cc.cc)
+- We'll coordinate responsible disclosure and patch quickly
+
+---
 
 ## 📜 License
 
-Simple-Invest is and will remain free and open for everyone. This project is licensed under the AGPL-3.0 License - see the LICENSE file for details.
+Simple-Invest is and will remain **free and open for everyone**.
+
+Licensed under the [AGPL-3.0 License](LICENSE) — built for the community, by the community.
+
+---
 
 ## 🙏 Acknowledgements
 
-- Finnhub for accessible market data
-- TradingView for embeddable market widgets
-- shadcn/ui, Radix UI, Tailwind CSS, Next.js community
-- Inngest for dependable background jobs and workflows
-- Better Auth for simple and secure authentication
-- All contributors who make open tools possible
+Built with gratitude for these amazing open-source projects:
 
-— Built openly, for everyone, forever free. Open Dev Society.
+- **Finnhub** for accessible market data
+- **TradingView** for professional market widgets
+- **shadcn/ui, Radix UI & Tailwind CSS** for the beautiful UI foundation
+- **Next.js** and the React community
+- **Inngest** for reliable background jobs
+- **Better Auth** for simple, secure authentication
+- **All contributors** who make open tools possible
 
+---
 
-
+<div align="center">
+  <br />
+  <p><strong>Built openly, for everyone, forever free.</strong></p>
+  <p><em>Open Dev Society</em></p>
+  <br />
+  
+  **[⭐ Star this repo](https://github.com/Open-Dev-Society/Simple-Invest)** • **[🐛 Report Bug](https://github.com/Open-Dev-Society/Simple-Invest/issues)** • **[💡 Request Feature](https://github.com/Open-Dev-Society/Simple-Invest/issues)**
+</div>
