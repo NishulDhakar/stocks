@@ -18,8 +18,8 @@ export const sendWelcomeEmail = async ({ email, name, intro }: WelcomeEmailData)
     const mailOptions = {
         from: `"Stocks" <smplnvst@gmail.com>`,
         to: email,
-        subject: `Welcome to Stocksapp - your stock market toolkit is ready!`,
-        text: 'Thanks for joining Stocksapp',
+        subject: `Welcome to Simple-Invest - your stock market toolkit is ready!`,
+        text: 'Thanks for joining Simple-Invest',
         html: htmlTemplate,
     }
 
