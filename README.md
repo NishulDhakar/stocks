@@ -20,7 +20,7 @@
 
 ---
 
-## 🎯 What is Simple-Invest?
+## What is Simple-Invest?
 
 Simple-Invest is an **open-source alternative to expensive market platforms**. Built for students, developers, and individual investors who want powerful market tracking without the subscription fees.
 
@@ -30,13 +30,13 @@ Simple-Invest is an **open-source alternative to expensive market platforms**. B
 
 ---
 
-## ✨ Features
+## Features
 
 <table>
 <tr>
 <td width="50%">
 
-### 🔐 **Authentication**
+### **Authentication**
 Secure email/password auth with Better Auth + MongoDB. Protected routes ensure your data stays private.
 
 ### 🔍 **Global Search**
@@ -48,20 +48,20 @@ Build and manage your personal watchlist. Each symbol is unique per user and sto
 </td>
 <td width="50%">
 
-### 📈 **Stock Details**
+### **Stock Details**
 Interactive TradingView charts, company profiles, financials, and technical indicators — all in one view.
 
-### 🌍 **Market Overview**
+### **Market Overview**
 Heatmaps, live quotes, and top stories powered by TradingView widgets.
 
-### 📧 **Smart Notifications**
+### **Smart Notifications**
 AI-personalized welcome emails and daily news summaries based on your watchlist.
 
 </td>
 </tr>
 </table>
 
-### 🎨 **Beautiful UI**
+### **Beautiful UI**
 - Dark theme by default with shadcn/ui components
 - Radix UI primitives for accessibility
 - Tailwind CSS v4 design system
@@ -69,7 +69,7 @@ AI-personalized welcome emails and daily news summaries based on your watchlist.
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -109,11 +109,11 @@ pnpm dev
 npx inngest-cli@latest dev
 ```
 
-🎉 **Open [http://localhost:3000](http://localhost:3000)** and start exploring!
+ **Open [http://localhost:3000](http://localhost:3000)** and start exploring!
 
 ---
 
-## 🔐 Environment Variables
+## Environment Variables
 
 Create a `.env` file in the project root:
 
@@ -151,7 +151,7 @@ NODEMAILER_PASSWORD=your_gmail_app_password
 
 </details>
 
-**🔒 Security Tips:**
+** Security Tips:**
 - Never commit `.env` to version control
 - Use App Passwords for Gmail with 2FA enabled
 - Keep `NEXT_PUBLIC_` variables minimal (they're exposed to browsers)
@@ -234,13 +234,13 @@ Modern authentication with MongoDB adapter. Session-based security with middlewa
 
 ### **Inngest**
 Reliable background job processing:
-- ✉️ Welcome emails on user signup
-- 📰 Daily news summaries at noon
-- 🤖 AI-powered content via Gemini
+- Welcome emails on user signup
+- Daily news summaries at noon
+- AI-powered content via Gemini
 
 ---
 
-## 🛠️ Available Scripts
+## Available Scripts
 
 | Command | Description |
 |---------|-------------|
@@ -252,17 +252,17 @@ Reliable background job processing:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 **You belong here.** Whether you're writing your first line of code or your millionth, contributions are welcome.
 
 ### How to Contribute
 
-1. **🔍 Find an issue** — Look for `good first issue` or `help wanted` labels
-2. **💬 Discuss first** — Open an issue to discuss your idea
-3. **🔧 Make changes** — Keep PRs focused on a single feature/fix
-4. **📸 Add screenshots** — For UI changes, show before/after
-5. **✨ Be kind** — Guide beginners, no gatekeeping
+1. ** Find an issue** — Look for `good first issue` or `help wanted` labels
+2. ** Discuss first** — Open an issue to discuss your idea
+3. ** Make changes** — Keep PRs focused on a single feature/fix
+4. ** Add screenshots** — For UI changes, show before/after
+5. ** Be kind** — Guide beginners, no gatekeeping
 
 ### Development Workflow
 
@@ -282,7 +282,7 @@ git push origin feature/amazing-feature
 
 ---
 
-## 🌍 Open Dev Society Manifesto
+## Open Dev Society Manifesto
 
 > **We live in a world where knowledge is hidden behind paywalls.**
 
@@ -293,10 +293,10 @@ Technology should belong to everyone. Knowledge should be open, free, and access
 
 ### Our Mission
 Build free, open-source projects that make a real difference:
-- 🔓 **Tools** that professionals and students can use without barriers
-- 📚 **Knowledge platforms** where learning is free, forever
-- 🤝 **Communities** where every beginner is guided, not judged
-- 💎 **Resources** that run on trust, not profit
+-  **Tools** that professionals and students can use without barriers
+-  **Knowledge platforms** where learning is free, forever
+-  **Communities** where every beginner is guided, not judged
+-  **Resources** that run on trust, not profit
 
 ### Our Promise
 We will never lock knowledge. We will never charge for access. We will never trade trust for money. We run on transparency, donations, and the strength of our community.
@@ -308,25 +308,7 @@ If you've ever felt you didn't belong, struggled to find free resources, or want
 
 ---
 
-## 🛡️ Security
-
-Found a vulnerability? We take security seriously.
-
-- **Do not** open a public issue
-- **Email us** at [opendevsociety@cc.cc](mailto:opendevsociety@cc.cc)
-- We'll coordinate responsible disclosure and patch quickly
-
----
-
-## 📜 License
-
-Simple-Invest is and will remain **free and open for everyone**.
-
-Licensed under the [AGPL-3.0 License](LICENSE) — built for the community, by the community.
-
----
-
-## 🙏 Acknowledgements
+## Acknowledgements
 
 Built with gratitude for these amazing open-source projects:
 
@@ -339,12 +321,3 @@ Built with gratitude for these amazing open-source projects:
 - **All contributors** who make open tools possible
 
 ---
-
-<div align="center">
-  <br />
-  <p><strong>Built openly, for everyone, forever free.</strong></p>
-  <p><em>Open Dev Society</em></p>
-  <br />
-  
-  **[⭐ Star this repo](https://github.com/nishuldhakar/Simple-Invest)** • **[🐛 Report Bug](https://github.com/nishuldhakar/Simple-Invest/issues)** • **[💡 Request Feature](https://github.com/nishuldhakar/Simple-Invest/issues)**
-</div>
