@@ -8,14 +8,6 @@
     <img src="https://img.shields.io/badge/-Tailwind%20CSS-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=38B2AC" alt="Tailwind CSS" />
     <img src="https://img.shields.io/badge/-MongoDB-black?style=for-the-badge&logoColor=white&logo=mongodb&color=00A35C" alt="MongoDB" />
   </div>
-
-  <p align="center">
-    <a href="#-features">Features</a> •
-    <a href="#-quick-start">Quick Start</a> •
-    <a href="#-docker-setup">Docker</a> •
-    <a href="#-contributing">Contributing</a> •
-    <a href="#-nishuldhakar-manifesto">Manifesto</a>
-  </p>
 </div>
 
 ---
