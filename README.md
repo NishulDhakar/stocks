@@ -1,8 +1,5 @@
 <div align="center">
   <br />
-  <a href="#" target="_blank">
-    <img src="./public/assets/images/dashboard.png" alt="Simple-Invest Dashboard" />
-  </a>
   <br/>
 
   <h1>Simple-Invest</h1>
@@ -20,7 +17,7 @@
     <a href="#-quick-start">Quick Start</a> •
     <a href="#-docker-setup">Docker</a> •
     <a href="#-contributing">Contributing</a> •
-    <a href="#-open-dev-society-manifesto">Manifesto</a>
+    <a href="#-nishuldhakar-manifesto">Manifesto</a>
   </p>
 </div>
 
@@ -91,7 +88,7 @@ AI-personalized welcome emails and daily news summaries based on your watchlist.
 
 ```bash
 # Clone the repository
-git clone https://github.com/Open-Dev-Society/Simple-Invest.git
+git clone https://github.com/nishuldhakar/Simple-Invest.git
 cd Simple-Invest
 
 # Install dependencies
@@ -117,23 +114,6 @@ npx inngest-cli@latest dev
 ```
 
 🎉 **Open [http://localhost:3000](http://localhost:3000)** and start exploring!
-
----
-
-## 🐳 Docker Setup
-
-Run the entire stack with one command:
-
-```bash
-# Start MongoDB and the app
-docker compose up -d mongodb && docker compose up -d --build
-```
-
-**Access points:**
-- 🌐 App: [http://localhost:3000](http://localhost:3000)
-- 🗄️ MongoDB: `mongodb:27017` (internal network)
-
-Your data persists across restarts via Docker volumes. See the full [Docker Setup](#docker-setup-detailed) section for configuration details.
 
 ---
 
@@ -370,5 +350,5 @@ Built with gratitude for these amazing open-source projects:
   <p><em>Open Dev Society</em></p>
   <br />
   
-  **[⭐ Star this repo](https://github.com/Open-Dev-Society/Simple-Invest)** • **[🐛 Report Bug](https://github.com/Open-Dev-Society/Simple-Invest/issues)** • **[💡 Request Feature](https://github.com/Open-Dev-Society/Simple-Invest/issues)**
+  **[⭐ Star this repo](https://github.com/nishuldhakar/Simple-Invest)** • **[🐛 Report Bug](https://github.com/nishuldhakar/Simple-Invest/issues)** • **[💡 Request Feature](https://github.com/nishuldhakar/Simple-Invest/issues)**
 </div>
