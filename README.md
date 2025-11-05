@@ -75,11 +75,10 @@ AI-personalized welcome emails and daily news summaries based on your watchlist.
 
 | Requirement | Description |
 |------------|-------------|
-| **Node.js 20+** | Runtime environment |
-| **MongoDB** | Database (Atlas or local Docker) |
+| **MongoDB** | Database (Atlas ) |
 | **Finnhub API** | Market data (free tier available) |
 | **Gmail Account** | Email notifications |
-| **Gemini API** _(optional)_ | AI-powered features |
+| **Gemini API** | AI-powered features |
 
 ### Installation
 
