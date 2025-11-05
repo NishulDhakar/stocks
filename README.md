@@ -260,7 +260,7 @@ Reliable background job processing:
 
 ```bash
 # Fork and clone the repo
-git clone https://github.com/YOUR_USERNAME/Simple-Invest.git
+git clone https://github.com/nishuldhakar/Simple-Invest.git
 
 # Create a feature branch
 git checkout -b feature/amazing-feature
