@@ -1,7 +1,4 @@
 <div align="center">
-  <br />
-  <br/>
-
   <h1>Simple-Invest</h1>
   <p><strong>Track markets. Set alerts. Stay informed. Forever free.</strong></p>
 
