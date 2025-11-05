@@ -1,8 +1,6 @@
 <div align="center">
   <h1>Simple-Invest</h1>
   <p><strong>Track markets. Set alerts. Stay informed. Forever free.</strong></p>
-![121shots_so](https://github.com/user-attachments/assets/b0904152-eff1-4703-b383-85a4f2e1e42f)
-![552shots_so](https://github.com/user-attachments/assets/7f7492dd-aa73-46e9-b1e4-aaea16857f78)
 
   <div>
     <img src="https://img.shields.io/badge/-Next.js-black?style=for-the-badge&logoColor=white&logo=next.js&color=000000" alt="Next.js" />
