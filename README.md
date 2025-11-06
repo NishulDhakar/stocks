@@ -250,11 +250,11 @@ Reliable background job processing:
 
 ### How to Contribute
 
-1. ** Find an issue** — Look for `good first issue` or `help wanted` labels
-2. ** Discuss first** — Open an issue to discuss your idea
-3. ** Make changes** — Keep PRs focused on a single feature/fix
-4. ** Add screenshots** — For UI changes, show before/after
-5. ** Be kind** — Guide beginners, no gatekeeping
+1. **Find an issue** — Look for `good first issue` or `help wanted` labels
+2. **Discuss first** — Open an issue to discuss your idea
+3. **Make changes** — Keep PRs focused on a single feature/fix
+4. **Add screenshots** — For UI changes, show before/after
+5. **Be kind** — Guide beginners, no gatekeeping
 
 ### Development Workflow
 
