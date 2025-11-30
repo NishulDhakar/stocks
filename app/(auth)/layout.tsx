@@ -25,7 +25,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
                 </div>
 
                 <div className="mt-8 text-sm text-muted-foreground text-center">
-                    &copy; {new Date().getFullYear()} Wealth Inc. All rights reserved.
+                    &copy; {new Date().getFullYear()} Simple Invest. All rights reserved.
                 </div>
             </section>
 
