@@ -1,4 +1,8 @@
 import LazyTradingViewWidget from "@/components/LazyTradingViewWidget";
+import { auth } from "@/lib/batter-auth/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Loader2 } from "lucide-react";
 
@@ -10,7 +14,11 @@ import {
 } from "@/lib/constants";
 import { ArrowUpRight, TrendingUp, Wallet, Activity, Sparkles, Calendar } from "lucide-react";
 
-const Home = () => {
+const Home = async () => {
+    const session = await auth.api.getSession({ headers: await headers() });
+    if (!session?.user) redirect('/sign-in');
+    const user = session.user;
+
     const scriptUrl = `https://s3.tradingview.com/external-embedding/embed-widget-`;
     const currentDate = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
@@ -24,7 +32,7 @@ const Home = () => {
                         <span className="text-sm font-medium tracking-wide uppercase">Premium Overview</span>
                     </div> */}
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-                        Good morning, <span className="text-gradient-gold">Nishul</span>
+                        Good morning, <span className="text-gradient-gold"> {user.name}</span>
                     </h1>
                     <p className="text-muted-foreground mt-2 text-lg">
                         Your wealth is growing. Here's your daily briefing.
