@@ -18,6 +18,12 @@ const Home = async () => {
     const session = await auth.api.getSession({ headers: await headers() });
     if (!session?.user) redirect('/sign-in');
     const user = session.user;
+    const greeting = (() => {
+        const hour = new Date().getHours();
+        if (hour < 12) return 'Good morning';
+        if (hour < 18) return 'Good afternoon';
+        return 'Good evening';
+    })();
 
     const scriptUrl = `https://s3.tradingview.com/external-embedding/embed-widget-`;
     const currentDate = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
@@ -32,11 +38,11 @@ const Home = async () => {
                         <span className="text-sm font-medium tracking-wide uppercase">Premium Overview</span>
                     </div> */}
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-                        Good morning, <span className="text-gradient-gold"> {user.name}</span>
+                        {greeting}, <span className="text-gradient-gold"> {user.name}</span>
                     </h1>
-                    <p className="text-muted-foreground mt-2 text-lg">
+                    {/* <p className="text-muted-foreground mt-2 text-lg">
                         Your wealth is growing. Here's your daily briefing.
-                    </p>
+                    </p> */}
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-muted-foreground">
                     <Calendar className="h-4 w-4" />
