@@ -1,7 +1,7 @@
 "use server";
 
-import {inngest} from "@/lib/inngest/client";
-import {headers} from "next/headers";
+import { inngest } from "@/lib/inngest/client";
+import { headers } from "next/headers";
 import { auth } from "../batter-auth/auth";
 
 
@@ -15,7 +15,7 @@ export const signUpWithEmail = async ({ email, password, fullName, country, inve
     try {
         const response = await auth.api.signUpEmail({ body: { email, password, name: fullName } })
 
-        if(response) {
+        if (response) {
             await inngest.send({
                 name: 'app/user.created',
                 data: { email, name: fullName, country, investmentGoals, riskTolerance, preferredIndustry }
@@ -23,9 +23,9 @@ export const signUpWithEmail = async ({ email, password, fullName, country, inve
         }
 
         return { success: true, data: response }
-    } catch (e) {
+    } catch (e: any) {
         console.log('Sign up failed', e)
-        return { success: false, error: 'Sign up failed' }
+        return { success: false, error: e?.body?.message || e?.message || 'Sign up failed' }
     }
 }
 

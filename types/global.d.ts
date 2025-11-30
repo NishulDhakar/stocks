@@ -8,10 +8,10 @@ declare global {
         fullName: string;
         email: string;
         password: string;
-        country: string;
-        investmentGoals: string;
-        riskTolerance: string;
-        preferredIndustry: string;
+        country?: string;
+        investmentGoals?: string;
+        riskTolerance?: string;
+        preferredIndustry?: string;
     };
 
     type CountrySelectProps = {
@@ -56,9 +56,11 @@ declare global {
     };
 
     type SearchCommandProps = {
-        renderAs?: 'button' | 'text';
+        renderAs?: 'button' | 'text' | 'input';
         label?: string;
         initialStocks: StockWithWatchlistStatus[];
+        buttonClassName?: string;
+        showIcon?: boolean;
     };
 
     type WelcomeEmailData = {
@@ -175,6 +177,7 @@ declare global {
         buttonLabel?: string;
         buttonVariant?: 'primary' | 'secondary';
         className?: string;
+        buttonClassName?: string;
     };
 
     type AlertData = {
@@ -216,25 +219,25 @@ declare global {
         changePercent?: number;
     };
 
-  type UserForNewsEmail = {
-  id: string;
-  email: string;
-  name: string;
-  country: string;
-  investmentGoals: string;
-  riskTolerance: string;
-  preferredIndustry: string;
-};
+    type UserForNewsEmail = {
+        id: string;
+        email: string;
+        name: string;
+        country: string;
+        investmentGoals: string;
+        riskTolerance: string;
+        preferredIndustry: string;
+    };
 
-type Profile = {
-  symbol: string;
-  name: string;
-  description: string;
-  exchange: string;
-    ticker: string;
-      __exchange?: string;
-};
+    type Profile = {
+        symbol: string;
+        name: string;
+        description: string;
+        exchange: string;
+        ticker: string;
+        __exchange?: string;
+    };
 
 }
 
-export {};
+export { };

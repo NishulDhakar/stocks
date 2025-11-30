@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Star, TrendingUp, TrendingDown } from "lucide-react";
 import { removeFromWatchlist } from "@/lib/actions/watchlist.actions";
 import { toast } from "sonner";
+import Link from "next/link";
 
 export default function WatchlistTable({ watchlist }: WatchlistTableProps) {
   const [localWatchlist, setLocalWatchlist] = useState(watchlist);
@@ -22,88 +23,91 @@ export default function WatchlistTable({ watchlist }: WatchlistTableProps) {
     }
   };
 
-
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(price);
-  };
-
-  const formatChange = (change: number) => {
-    const sign = change >= 0 ? '+' : '';
-    return `${sign}${change.toFixed(2)}%`;
-  };
-
-  const formatMarketCap = (marketCap: string) => {
-    if (marketCap === 'N/A') return 'N/A';
-    // You can enhance this with proper market cap formatting
-    return marketCap;
-  };
-
   if (localWatchlist.length === 0) {
     return (
-      <div className="watchlist-empty-state">
-        <div className="watchlist-empty-content">
-          <Star className="watchlist-empty-icon" />
-          <p className="watchlist-empty-title">No stocks in your watchlist</p>
-          <p className="watchlist-empty-description">Add stocks to start tracking their performance</p>
-        </div>
+      <div className="flex flex-col items-center justify-center py-16 px-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10">
+        <Star className="h-16 w-16 text-yellow-500/20 mb-4" />
+        <p className="text-xl font-semibold text-foreground mb-2">No stocks in your watchlist</p>
+        <p className="text-muted-foreground text-center">Add stocks to start tracking their performance</p>
       </div>
     );
   }
 
   return (
-    <div className="watchlist-table-container">
-      <table className="watchlist-table">
-        <thead>
-          <tr>
-            <th>Company</th>
-            <th>Symbol</th>
-            <th>Price</th>
-            <th>Change</th>
-            <th>Market Cap</th>
-          </tr>
-        </thead>
-        <tbody>
-          {localWatchlist.map((stock) => (
-            <tr key={stock.symbol}>
-              <td>
-                <div className="watchlist-company-cell">
-                  <Star 
-                    className="watchlist-star-icon"
-                    onClick={() => handleRemoveStock(stock.symbol)}
-                  />
-                  <div>
-                    <div className="watchlist-company-name">{stock.company}</div>
-                  </div>
-                </div>
-              </td>
-              <td className="watchlist-symbol">{stock.symbol}</td>
-              <td className="watchlist-price">
-                {stock.currentPrice ? formatPrice(stock.currentPrice) : stock.priceFormatted}
-              </td>
-              <td>
-                <div className={`watchlist-change ${
-                  (stock.changePercent ?? 0) >= 0 ? 'watchlist-change-positive' : 'watchlist-change-negative'
-                }`}>
-                  {(stock.changePercent ?? 0) >= 0 ? (
-                    <TrendingUp className="watchlist-change-icon" />
-                  ) : (
-                    <TrendingDown className="watchlist-change-icon" />
-                  )}
-                  <span className="watchlist-change-text">
-                    {stock.changePercent !== undefined && stock.changePercent !== 0 ? formatChange(stock.changePercent) : stock.changeFormatted}
-                  </span>
-                </div>
-              </td>
-              <td className="watchlist-market-cap">{formatMarketCap(stock.marketCap || 'N/A')}</td>
+    <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden">
+      <div className="overflow-x-auto">
+        <table className="w-full text-left text-sm">
+          <thead>
+            <tr className="border-b border-white/10 bg-white/5">
+              <th className="px-6 py-4 font-medium text-muted-foreground">Company</th>
+              <th className="px-6 py-4 font-medium text-muted-foreground">Symbol</th>
+              <th className="px-6 py-4 font-medium text-muted-foreground">Price</th>
+              <th className="px-6 py-4 font-medium text-muted-foreground">Change</th>
+              <th className="px-6 py-4 font-medium text-muted-foreground hidden md:table-cell">Market Cap</th>
+              <th className="px-6 py-4 font-medium text-muted-foreground hidden lg:table-cell">P/E Ratio</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="divide-y divide-white/5">
+            {localWatchlist.map((stock) => (
+              <tr key={stock.symbol} className="group hover:bg-white/5 transition-colors">
+                <td className="px-6 py-4">
+                  <Link href={`/stocks/${stock.symbol}`} className="flex items-center gap-3 group/link">
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        handleRemoveStock(stock.symbol);
+                      }}
+                      className="flex-shrink-0"
+                      title="Remove from watchlist"
+                    >
+                      <Star className="h-5 w-5 text-yellow-500 fill-yellow-500 hover:text-yellow-400 hover:fill-yellow-400 transition-colors cursor-pointer" />
+                    </button>
+                    <div className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center text-sm font-bold text-foreground flex-shrink-0">
+                      {stock.symbol[0]}
+                    </div>
+                    <div className="min-w-0">
+                      <div className="font-semibold text-foreground group-hover/link:text-primary transition-colors truncate">
+                        {stock.company}
+                      </div>
+                      <div className="text-xs text-muted-foreground truncate">{stock.symbol}</div>
+                    </div>
+                  </Link>
+                </td>
+                <td className="px-6 py-4 font-medium text-foreground">
+                  {stock.symbol}
+                </td>
+                <td className="px-6 py-4 font-semibold text-foreground">
+                  {stock.currentPrice ? `$${stock.currentPrice.toFixed(2)}` : stock.priceFormatted || 'N/A'}
+                </td>
+                <td className="px-6 py-4">
+                  <div className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium ${(stock.changePercent ?? 0) >= 0
+                      ? 'bg-emerald-500/10 text-emerald-400'
+                      : 'bg-red-500/10 text-red-400'
+                    }`}>
+                    {(stock.changePercent ?? 0) >= 0 ? (
+                      <TrendingUp className="h-3 w-3" />
+                    ) : (
+                      <TrendingDown className="h-3 w-3" />
+                    )}
+                    <span>
+                      {stock.changePercent !== undefined && stock.changePercent !== 0
+                        ? `${stock.changePercent >= 0 ? '+' : ''}${stock.changePercent.toFixed(2)}%`
+                        : stock.changeFormatted || 'N/A'}
+                    </span>
+                  </div>
+                </td>
+                <td className="px-6 py-4 text-muted-foreground hidden md:table-cell">
+                  {stock.marketCap || 'N/A'}
+                </td>
+                <td className="px-6 py-4 text-muted-foreground hidden lg:table-cell">
+                  {stock.peRatio || 'N/A'}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

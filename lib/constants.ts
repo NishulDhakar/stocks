@@ -1,7 +1,7 @@
 export const NAV_ITEMS = [
-    { href: '/', label: 'Dashboard' },
-    { href: '/search', label: 'Search' },
-    { href: '/watchlist', label: 'Watchlist' },
+
+    { href: '/search', label: 'Search Stocks' },
+
 ];
 
 // Sign-up form select options
@@ -168,6 +168,40 @@ export const MARKET_DATA_WIDGET_CONFIG = {
             ],
         },
     ],
+};
+
+export const FOREX_CROSS_RATES_WIDGET_CONFIG = {
+    width: '100%',
+    height: 400,
+    currencies: [
+        'EUR',
+        'USD',
+        'JPY',
+        'GBP',
+        'CHF',
+        'AUD',
+        'CAD',
+        'NZD',
+        'CNY',
+    ],
+    isTransparent: true,
+    colorTheme: 'dark',
+    locale: 'en',
+};
+
+export const CRYPTO_COINS_HEATMAP_WIDGET_CONFIG = {
+    dataSource: 'Crypto',
+    blockSize: 'market_cap_calc',
+    blockColor: 'change',
+    locale: 'en',
+    symbolUrl: '',
+    colorTheme: 'dark',
+    hasTopBar: false,
+    isDataSetEnabled: false,
+    isZoomEnabled: true,
+    hasSymbolTooltip: true,
+    width: '100%',
+    height: 500,
 };
 
 export const SYMBOL_INFO_WIDGET_CONFIG = (symbol: string) => ({

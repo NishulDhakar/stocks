@@ -11,6 +11,7 @@ import {
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Navitems from "./Navitems";
@@ -21,7 +22,7 @@ import { signOut } from "@/lib/actions/auth.actions";
 import md5 from "blueimp-md5";
 
 interface UserDropdownProps {
-  user: { name: string; email: string };
+  user: { name: string; email: string; image?: string };
   initialStocks: StockWithWatchlistStatus[];
 }
 
@@ -29,7 +30,10 @@ const UserDropdown = ({ user, initialStocks }: UserDropdownProps) => {
   const router = useRouter();
 
   const handleSignOut = async () => {
-    await signOut();
+    const result = await signOut();
+    if (result && !result.success) {
+      toast.error(result.error || "Failed to sign out");
+    }
     router.push("/sign-in");
   };
 
@@ -45,6 +49,7 @@ const UserDropdown = ({ user, initialStocks }: UserDropdownProps) => {
   };
 
   const { gravatar, fallback } = getAvatarUrl(user.email, user.name);
+  const avatarSrc = user.image || gravatar;
 
   return (
     <DropdownMenu>
@@ -55,7 +60,7 @@ const UserDropdown = ({ user, initialStocks }: UserDropdownProps) => {
         >
           <Avatar className="h-8 w-8">
             <AvatarImage
-              src={gravatar}
+              src={avatarSrc}
               onError={(e: any) => {
                 e.currentTarget.src = fallback;
               }}
@@ -78,7 +83,7 @@ const UserDropdown = ({ user, initialStocks }: UserDropdownProps) => {
           <div className="flex items-center gap-3 py-2">
             <Avatar className="h-10 w-10">
               <AvatarImage
-                src={gravatar}
+                src={avatarSrc}
                 onError={(e: any) => {
                   e.currentTarget.src = fallback;
                 }}

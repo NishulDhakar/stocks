@@ -1,18 +1,17 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react"
 import { CommandDialog, CommandEmpty, CommandInput, CommandList } from "@/components/ui/command"
-import {Button} from "@/components/ui/button";
-import {Loader2,  Star,  TrendingUp} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Loader2, Plus, Search, Star, TrendingUp } from "lucide-react";
 import Link from "next/link";
 
-
-import { searchStocks } from "@/lib/actions/ finnhub.actions";
+import { searchStocks } from "@/lib/actions/finnhub.actions";
 import { useDebounce } from "@/hooks/useDebounce";
 import { addToWatchlist, removeFromWatchlist } from "@/lib/actions/watchlist.actions";
 import { toast } from "sonner";
 
-export default function SearchCommand({ renderAs = 'button', label = 'Add stock', initialStocks }: SearchCommandProps) {
+export default function SearchCommand({ renderAs = 'button', label = 'Add stock', initialStocks, buttonClassName, showIcon = false }: SearchCommandProps) {
   const [open, setOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
   const [loading, setLoading] = useState(false)
@@ -33,14 +32,14 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
   }, [])
 
   const handleSearch = async () => {
-    if(!isSearchMode) return setStocks(initialStocks);
+    if (!isSearchMode) return setStocks(initialStocks);
 
     setLoading(true)
     try {
-        console.log('Searching for:', searchTerm.trim());
-        const results = await searchStocks(searchTerm.trim());
-        console.log('Search results:', results);
-        setStocks(results);
+      console.log('Searching for:', searchTerm.trim());
+      const results = await searchStocks(searchTerm.trim());
+      console.log('Search results:', results);
+      setStocks(results);
     } catch (error) {
       console.error('Search error:', error);
       setStocks([])
@@ -64,13 +63,12 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
   const handleStarClick = async (e: React.MouseEvent, stock: StockWithWatchlistStatus) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     try {
       if (stock.isInWatchlist) {
         const result = await removeFromWatchlist(stock.symbol);
         if (result.success) {
-          // Update local state
-          setStocks(prev => prev.map(s => 
+          setStocks(prev => prev.map(s =>
             s.symbol === stock.symbol ? { ...s, isInWatchlist: false } : s
           ));
           toast.success("Stock removed from watchlist");
@@ -80,8 +78,7 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
       } else {
         const result = await addToWatchlist(stock.symbol, stock.name);
         if (result.success) {
-          // Update local state
-          setStocks(prev => prev.map(s => 
+          setStocks(prev => prev.map(s =>
             s.symbol === stock.symbol ? { ...s, isInWatchlist: true } : s
           ));
           toast.success("Stock added to watchlist");
@@ -97,61 +94,82 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
   return (
     <>
       {renderAs === 'text' ? (
-          <span onClick={() => setOpen(true)} className="search-text">
-            {label}
-          </span>
-      ): (
-          <Button onClick={() => setOpen(true)} className="search-btn">
-            {label}
-          </Button>
-      )}
-      <CommandDialog open={open} onOpenChange={setOpen} className="search-dialog">
-        <div className="search-field">
-          <CommandInput value={searchTerm} onValueChange={setSearchTerm} placeholder="Search stocks..." className="search-input" />
-          {loading && <Loader2 className="search-loader" />}
+        <span onClick={() => setOpen(true)} className="cursor-pointer text-primary hover:text-primary/80 transition-colors">
+          {label}
+        </span>
+      ) : renderAs === 'input' ? (
+        <div
+          onClick={() => setOpen(true)}
+          className="relative cursor-text"
+        >
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+          <input
+            type="text"
+            placeholder={label}
+            readOnly
+            className="h-10 w-full sm:w-64 rounded-full border border-white/10 bg-white/5 pl-10 pr-4 text-sm text-foreground placeholder:text-muted-foreground cursor-pointer hover:border-white/20 focus:outline-none transition-all"
+          />
         </div>
-        <CommandList className="search-list">
+      ) : (
+        <Button onClick={() => setOpen(true)} className={buttonClassName || "bg-primary text-primary-foreground hover:bg-primary/90"}>
+          {showIcon && <Plus className="h-4 w-4 mr-2" />}
+          {label}
+        </Button>
+      )}
+      <CommandDialog open={open} onOpenChange={setOpen}>
+        <div className="relative">
+          <CommandInput
+            value={searchTerm}
+            onValueChange={setSearchTerm}
+            placeholder="Search stocks..."
+            className="h-12 text-base"
+          />
+          {loading && <Loader2 className="absolute right-3 top-3 h-5 w-5 animate-spin text-muted-foreground" />}
+        </div>
+        <CommandList className="max-h-[400px] scrollbar-hide">
           {loading ? (
-              <CommandEmpty className="search-list-empty">Loading stocks...</CommandEmpty>
+            <CommandEmpty className="py-6 text-center text-muted-foreground">Loading stocks...</CommandEmpty>
           ) : displayStocks?.length === 0 ? (
-              <div className="search-list-indicator">
-                {isSearchMode ? 'No results found' : 'No stocks available'}
-              </div>
-            ) : (
-            <ul>
-              <div className="search-count">
+            <div className="py-6 text-center text-muted-foreground text-sm">
+              {isSearchMode ? 'No results found' : 'No stocks available'}
+            </div>
+          ) : (
+            <div className="p-2">
+              <div className="px-2 py-1.5 text-xs font-semibold text-muted-foreground">
                 {isSearchMode ? 'Search results' : 'Popular stocks'}
-                {` `}({displayStocks?.length || 0})
+                <span className="ml-1">({displayStocks?.length || 0})</span>
               </div>
-              {displayStocks?.map((stock, i) => (
-                  <li key={stock.symbol} className="search-item">
-                    <Link
-                        href={`/stocks/${stock.symbol}`}
-                        onClick={handleSelectStock}
-                        className="search-item-link">
-                      <TrendingUp className="h-4 w-4 text-gray-500" />
-                      <div  className="flex-1">
-                        <div className="search-item-name">
-                          {stock.name}
-                        </div>
-                        <div className="text-sm text-gray-500">
-                          {stock.symbol} | {stock.exchange } | {stock.type}
-                        </div>
-                      </div>
-                    <Star 
-                      className={`h-5 w-5 cursor-pointer transition-colors ${
-                        stock.isInWatchlist 
-                          ? 'text-yellow-400 fill-current hover:text-yellow-300' 
-                          : 'text-gray-400 hover:text-yellow-400'
+              {displayStocks?.map((stock) => (
+                <Link
+                  key={stock.symbol}
+                  href={`/stocks/${stock.symbol}`}
+                  onClick={handleSelectStock}
+                  className="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-white/5 transition-colors group cursor-pointer"
+                >
+                  <TrendingUp className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <div className="font-semibold text-foreground text-sm group-hover:text-primary transition-colors truncate">
+                      {stock.name}
+                    </div>
+                    <div className="text-xs text-muted-foreground space-x-2">
+                      <span>{stock.symbol}</span>
+                      <span>•</span>
+                      <span>{stock.exchange}</span>
+                      <span>•</span>
+                      <span>{stock.type}</span>
+                    </div>
+                  </div>
+                  <Star
+                    className={`h-5 w-5 flex-shrink-0 cursor-pointer transition-colors ${stock.isInWatchlist
+                      ? 'text-yellow-500 fill-yellow-500 hover:text-yellow-400 hover:fill-yellow-400'
+                      : 'text-gray-400 hover:text-yellow-500'
                       }`}
-                      onClick={(e) => handleStarClick(e, stock)}
-                    />
-                    </Link>
-                  </li>
+                    onClick={(e) => handleStarClick(e, stock)}
+                  />
+                </Link>
               ))}
-            </ul>
-          )
-          }
+            </div>
+          )}
         </CommandList>
       </CommandDialog>
     </>
